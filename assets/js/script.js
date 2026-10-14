@@ -2,197 +2,271 @@
 REGOLE
 - Le risposte vanno scritte in JavaScript sotto ogni commento.
 - Puoi testare aprendo index.html nel browser e guardando la console (DevTools).
-- L'array starWarsCharacters è già preparato qui sotto: NON modificarlo a inizio file.
+- In alternativa: nel terminale, `node script.js`.
 - Cerca solo cose non viste a lezione. Tutto il necessario è già stato spiegato stamattina.
 */
 
-const starWarsCharacters = [
-	{
-		name: 'Luke Skywalker',
-		height: '172',
-		mass: '77',
-		hair_color: 'blond',
-		skin_color: 'fair',
-		eye_color: 'blue',
-		birth_year: '19BBY',
-		gender: 'male',
-	},
-	{
-		name: 'C-3PO',
-		height: '167',
-		mass: '750',
-		hair_color: 'n/a',
-		skin_color: 'gold',
-		eye_color: 'yellow',
-		birth_year: '112BBY',
-		gender: 'n/a',
-	},
-	{
-		name: 'R2-D2',
-		height: '96',
-		mass: '32',
-		hair_color: 'n/a',
-		skin_color: 'white, blue',
-		eye_color: 'red',
-		birth_year: '33BBY',
-		gender: 'n/a',
-	},
-	{
-		name: 'Darth Vader',
-		height: '202',
-		mass: '136',
-		hair_color: 'none',
-		skin_color: 'white',
-		eye_color: 'yellow',
-		birth_year: '41.9BBY',
-		gender: 'male',
-	},
-	{
-		name: 'Leia Organa',
-		height: '150',
-		mass: '49',
-		hair_color: 'brown',
-		skin_color: 'light',
-		eye_color: 'brown',
-		birth_year: '19BBY',
-		gender: 'female',
-	},
-	{
-		name: 'Owen Lars',
-		height: '178',
-		mass: '120',
-		hair_color: 'brown, grey',
-		skin_color: 'light',
-		eye_color: 'blue',
-		birth_year: '52BBY',
-		gender: 'male',
-	},
-	{
-		name: 'Beru Lars',
-		height: '165',
-		mass: '75',
-		hair_color: 'brown',
-		skin_color: 'light',
-		eye_color: 'blue',
-		birth_year: '47BBY',
-		gender: 'female',
-	},
-	{
-		name: 'R5-D4',
-		height: '97',
-		mass: '32',
-		hair_color: 'n/a',
-		skin_color: 'white, red',
-		eye_color: 'red',
-		birth_year: 'unknown',
-		gender: 'n/a',
-	},
-	{
-		name: 'Biggs Darklighter',
-		height: '183',
-		mass: '84',
-		hair_color: 'black',
-		skin_color: 'light',
-		eye_color: 'brown',
-		birth_year: '24BBY',
-		gender: 'male',
-	},
-	{
-		name: 'Obi-Wan Kenobi',
-		height: '182',
-		mass: '77',
-		hair_color: 'auburn, white',
-		skin_color: 'fair',
-		eye_color: 'blue-gray',
-		birth_year: '57BBY',
-		gender: 'male',
-	},
+/* ESERCIZIO 1 — Oggetto persona
+   Crea un oggetto 'persona' con: nome, cognome, eta, citta.
+   Stampa: 'Mario Rossi, 25 anni, vive a Roma.'
+*/
+
+/* SCRIVI QUI LA TUA RISPOSTA */
+
+const persona = {
+  nome: "Federico",
+  cognome: "Semeraro",
+  eta: 34,
+  citta: "Massafra",
+};
+
+console.log(`${persona.nome}, ${persona.eta} anni, vive a ${persona.citta}`);
+
+/* ESERCIZIO 2 — Aggiungi e rimuovi
+   Sull'oggetto 'persona': aggiungi 'email', poi rimuovi 'eta'.
+   Stampa l'oggetto risultante.
+*/
+
+/* SCRIVI QUI LA TUA RISPOSTA */
+
+persona.email = "federicosemeraro16@gmail.com";
+
+delete persona.eta;
+
+console.log(persona);
+
+/* ESERCIZIO 3 — Oggetto annidato
+   Oggetto 'utente' con una proprietà 'indirizzo' (oggetto con via, citta, cap).
+   Stampa solo il CAP con dot notation.
+*/
+
+/* SCRIVI QUI LA TUA RISPOSTA */
+
+const utente = {
+  nome: "Federico",
+  cognome: "Semeraro",
+  indirizzo: {
+    via: "Giacomo Trizzo,12",
+    citta: "Massafra",
+    cap: "74016",
+  },
+};
+
+console.log(utente.indirizzo.cap);
+
+/* ESERCIZIO 4 — Bracket dinamica
+   Sull'oggetto 'persona', variabile chiave = 'nome'.
+   Stampa il valore con bracket notation usando la variabile chiave.
+*/
+
+/* SCRIVI QUI LA TUA RISPOSTA */
+const chiave = persona["nome"];
+
+console.log(chiave);
+
+/* ESERCIZIO 5 — Numero più grande
+   Tre numeri a, b, c.
+   Con if/else if, stampa il più grande. Se pareggio al massimo, stampa 'Pareggio'.
+*/
+
+/* SCRIVI QUI LA TUA RISPOSTA */
+let num1 = 50;
+let num2 = 150;
+let num3 = 50;
+
+if (num1 > num2 && num1 > num3) {
+  console.log(num1);
+} else if (num2 > num3 && num2 > num1) {
+  console.log(num2);
+} else if (num2 === num3 && num2 === num1) {
+  console.log(`Pareggio`);
+} else {
+  console.log(num3);
+}
+
+/* ESERCIZIO 6 — E-commerce: spedizione
+   Variabile 'totale'.
+   Se totale >= 50 spedizione gratuita, altrimenti 9.90.
+   Stampa: 'Totale carrello: 35€ — Spedizione: 9.90€ — Totale finale: 44.90€'
+   Risolvi una volta con if/else e una volta con ternario.
+*/
+
+/* SCRIVI QUI LA TUA RISPOSTA */
+let totale = 35;
+let spedizione;
+let totaleFinale;
+
+if (totale >= 50) {
+  spedizione = 0;
+} else {
+  spedizione = 9.9;
+}
+console.log(
+  `Totale carrello : ${totale} - Spedizione : ${spedizione} - Totale finale : ${totale + spedizione}`,
+);
+
+ const totCarr = totale >=50 
+ ? console.log(
+   `Totale carrello : ${totale} - Spedizione gratuita - Totale finale : ${totale + spedizione}`
+
+ )
+ : console.log(
+   `Totale carrello : ${totale} - Spedizione : 9.90 - Totale finale : ${totale + spedizione}`
+);
+
+/* ESERCIZIO 7 — typeof check
+   Crea un array con 3 valori diversi (es. [42, 'ciao', true]).
+   Con un for + if, per ogni elemento stampa 'x è un numero' o 'x non è un numero'.
+*/
+
+const myArr = [18, "ciao", false];
+
+for (let i = 0; i < myArr.length; i++) {
+   if(typeof myArr[i]==='number'){
+      console.log(`${myArr[i]} è un numero`)
+   }else {
+      console.log(`${myArr[i]} non è un numero`)
+   }
+}
+
+/* SCRIVI QUI LA TUA RISPOSTA */
+/* ESERCIZIO 8 — Array dei numeri
+   Array vuoto. Aggiungi 1..5 con push. Aggiungi 0 all'inizio con unshift.
+   Stampa array e length.
+*/
+
+/* SCRIVI QUI LA TUA RISPOSTA */
+
+const myNumArr = [];
+myNumArr.push(1, 2, 3, 4, 5);
+myNumArr.unshift(0);
+console.log(myNumArr);
+console.log(myNumArr.length);
+
+/* ESERCIZIO 9 — Carrello con splice
+   Array ['Penna', 'Quaderno', 'Zaino', 'Astuccio'].
+   Con splice: rimuovi 'Quaderno', poi inserisci 'Diario' al suo posto.
+   Stampa dopo ogni operazione.
+*/
+
+/* SCRIVI QUI LA TUA RISPOSTA */
+
+const myCarr = ["Penna", "Quaderno", "Zaino", "Astuccio"];
+console.log(myCarr);
+myCarr.splice(1, 1);
+console.log(myCarr);
+myCarr.splice(1,0,'Diario');
+console.log(myCarr);
+/* ESERCIZIO 10 — Cerca un articolo
+   Array prodotti = ['Penna', 'Quaderno', 'Zaino'].
+   cercato = 'Zaino'.
+   Con includes: stampa 'Zaino è in carrello: true'.
+   Con indexOf: stampa la posizione, o 'Non in carrello'.
+*/
+
+/* SCRIVI QUI LA TUA RISPOSTA */
+
+const products = ["Penna", "Quadro", "Zaino"];
+let product = 'Zaino'; // ne creo uno nuovo dato che il nome è diverso nella consegna //
+let found = products.includes(product);
+console.log(found);
+
+if (found) {
+   let indFound = products.indexOf(product);
+  console.log(`${product} è in carrello alla posizione ${indFound}: true`);
+} else {
+  console.log(`Non in carrello`);
+}
+
+/* ESERCIZIO 11 — Lista utenti
+   Array utenti di 3 oggetti { nome, eta }.
+   Con un for, stampa ogni utente: 'Mario (25 anni)'.
+   Aggiungi console.table(utenti) alla fine.
+*/
+
+/* SCRIVI QUI LA TUA RISPOSTA */
+
+const myUsers = [
+  {
+    nome: "Federico",
+    eta: 34,
+  },
+  {
+    nome: "Vincenzo",
+    eta: 29,
+  },
+  {
+    nome: "Fabrizio",
+    eta: 18,
+  },
 ];
 
-/* ESERCIZIO 1 — Estrai i nomi
-   Array vuoto "nomi". Con un for, fai push di ogni starWarsCharacters[i].name.
-   Stampa "nomi".
+for (let i = 0; i < myUsers.length; i++) {
+  console.log(`${myUsers[i].nome}(${myUsers[i].eta} anni)`);
+}
+
+console.table(myUsers);
+
+/* ESERCIZIO 12 — Inventario disponibili
+   Array prodotti di 4 oggetti { nome, prezzo, disponibile }.
+   Con for, per ogni prodotto:
+   - disponibile && prezzo < 10 → 'OFFERTA: nome (prezzo€)'
+   - disponibile && prezzo >= 10 → 'nome — prezzo€'
+   - !disponibile → 'nome — esaurito'
 */
 
 /* SCRIVI QUI LA TUA RISPOSTA */
 
-/* ESERCIZIO 2 — Solo i femminili
-   Array vuoto "personaggiFemminili". Con un for + if (gender === "female"),
-   crea un nuovo oggetto { name, hair_color, eye_color } e fai push.
-   Stampa.
+const prodObj = [
+  {
+    nome: "Iphone 12",
+    prezzo: 21,
+    disponibile: true,
+  },
+  {
+   nome: 'Samsung 12',
+   prezzo: 15,
+   disponibile : false,
+  },
+  {
+   nome:'Huawei P10',
+   prezzo : 9,
+   disponibile : true,
+  },
+  {
+   nome : 'Honor c430',
+   prezzo : 7,
+   disponibile : false,
+  }
+];
+
+for (let i = 0; i < prodObj.length; i++){
+   if (prodObj[i].disponibile === true && prodObj[i].prezzo < 10){
+      console.log(`OFFERTA: ${prodObj[i].nome} ${prodObj[i].prezzo} €`)
+   } else if ( prodObj[i].disponibile === true && prodObj[i].prezzo >= 10){
+      console.log( `${prodObj[i].nome} - prezzo : ${prodObj[i].prezzo} €`)
+   } else if (!prodObj[i].disponibile){
+      console.log(`${prodObj[i].nome} - Esaurito!`)
+   }
+}
+
+
+
+/* --EXTRA-- ESERCIZIO 13 — Reverse manuale
+   Array [1, 2, 3, 4, 5].
+   Nuovo array 'inverso', riempilo con un for (dall'ultimo al primo) usando push.
+   Stampa 'inverso'.
+   Vincolo: niente metodo .reverse() di JavaScript.
 */
 
 /* SCRIVI QUI LA TUA RISPOSTA */
 
-/* ESERCIZIO 3 — Oggetto raggruppamento
-   Crea perColoreOcchi con chiavi: blue, yellow, brown, red, blue-gray (con trattino).
-   Ognuna con un array vuoto.
-*/
+// const arrayToInvert = [1,2,3,4,5];
+// const arrayInverted = [];
 
-/* SCRIVI QUI LA TUA RISPOSTA */
+// for (let i = 4; i< arrayToInvert.length;i--){
+//    arrayInverted.push(arrayToInvert[i])
+// }
 
-/* ESERCIZIO 4 — Raggruppa per colore degli occhi
-   For su starWarsCharacters + switch (character.eye_color).
-   In ogni case fai push del personaggio nell'array giusto. Ricorda break.
-   Stampa perColoreOcchi.
-*/
+// console.log(arrayInverted); -> SBAGLIATO LOOP INFINITO
 
-/* SCRIVI QUI LA TUA RISPOSTA */
-
-/* ESERCIZIO 5 — Massa totale dell'equipaggio (while)
-   i = 0, massaTotale = 0.
-   While: somma Number(starWarsCharacters[i].mass).
-   Stampa la massa totale.
-*/
-
-/* SCRIVI QUI LA TUA RISPOSTA */
-
-/* ESERCIZIO 6 — Classifica il carico
-   Su massaTotale, switch (true) o if/else if:
-   < 500            → "Carico leggero"
-   500 – 700        → "Carico medio"
-   700 – 900        → "Attenzione: oltre 700"
-   900 – 1000       → "Carico critico"
-   > 1000           → "PERICOLO: sovraccarico"
-*/
-
-/* SCRIVI QUI LA TUA RISPOSTA */
-
-/* ESERCIZIO 7 — Robotizza i n/a
-   For: per ogni personaggio con gender === "n/a", cambialo in "robot".
-   Stampa l'array.
-*/
-
-/* SCRIVI QUI LA TUA RISPOSTA */
-
-/* ESERCIZIO 8 — Più alto e più basso
-   For su starWarsCharacters. Trova il personaggio con altezza maggiore e quello con altezza minore.
-   L'altezza è una stringa: convertila con Number().
-   Stampa: "Più alto: Darth Vader (202 cm)" e "Più basso: ...".
-*/
-
-/* SCRIVI QUI LA TUA RISPOSTA */
-
-/* ESERCIZIO 9 — Rimuovi i femminili dai nomi (cicli annidati)
-   Sull'array "nomi" dell'esercizio 1: for esterno su nomi, for interno su personaggiFemminili.
-   Quando combaciano per nome, rimuovi quel nome da nomi con splice.
-   Stampa lunghezza prima e dopo.
-*/
-
-/* SCRIVI QUI LA TUA RISPOSTA */
-
-/* ESERCIZIO 10 — Personaggio casuale
-   indice = Math.floor(Math.random() * starWarsCharacters.length)
-   personaggio = starWarsCharacters[indice]
-   if/else su gender per stampare "Lei è alta X cm" o "Lui è alto X cm".
-   if su hair_color !== "n/a" && hair_color !== "none": stampa "Capelli: X" o "Senza capelli".
-*/
-
-/* SCRIVI QUI LA TUA RISPOSTA */
-
-/* --EXTRA-- ESERCIZIO 11 — Conta per colore di occhi
-   For...in sulle chiavi di perColoreOcchi.
-   Stampa: "blue: 4 personaggi", "yellow: 2 personaggi", ecc.
-*/
-
-/* SCRIVI QUI LA TUA RISPOSTA */
