@@ -119,13 +119,8 @@ const starWarsCharacters = [
 const names = [];
 // uso un for of essendo un array di oggetti //
 
-for (const character of starWarsCharacters) {
-  //ciclo for in per leggere le chiavi//
-  for (const chiave in character) {
-    if (chiave === "name") {
-      names.push(character.name);
-    }
-  }
+for (let i = 0; i < starWarsCharacters.length; i++) {
+  names.push(starWarsCharacters[i].name);
 }
 
 console.log(names);
@@ -141,19 +136,14 @@ console.log(names);
 
 const femaleCharacters = [];
 
-// scorro l'array con un for of //
-
-for (const character of starWarsCharacters) {
-  // ciclo for in per leggere la chiave //
-  for (const chiave in character) {
-    if (character[chiave] === "female") {
-      const newObj = {
-        name: character.name,
-        hair_color: character.hair_color,
-        eye_color: character.eye_color,
-      };
-      femaleCharacters.push(newObj);
-    }
+for (let i = 0; i < starWarsCharacters.length; i++) {
+  if (starWarsCharacters[i].gender === "female") {
+    const newObj = {
+      name: starWarsCharacters.name,
+      hair_color: starWarsCharacters.hair_color,
+      eye_color: starWarsCharacters.eye_color,
+    };
+    femaleCharacters.push(newObj);
   }
 }
 
@@ -184,27 +174,23 @@ const perColoreOcchi = {
 
 // creo un ciclo for of per leggere l'array //
 
-for (const character of starWarsCharacters) {
-  //creo un ciclo for in per leggere le chiavi degli oggetti //
-  for (let chiave in character) {
-    chiave = character.eye_color;
-    switch (chiave) {
-      case "blue":
-        perColoreOcchi.blue.push(character);
-        break;
-      case "yellow":
-        perColoreOcchi.yellow.push(character);
-        break;
-      case "brown":
-        perColoreOcchi.brown.push(character);
-        break;
-      case "blue":
-        perColoreOcchi.red.push(character);
-        break;
-      case "blue":
-        perColoreOcchi["blue-gray"].push(character);
-        break;
-    }
+for (let i = 0; i < starWarsCharacters.length; i++) {
+  switch (starWarsCharacters[i].eye_color) {
+    case "blue":
+      perColoreOcchi.blue.push(starWarsCharacters[i]);
+      break;
+    case "yellow":
+      perColoreOcchi.yellow.push(starWarsCharacters[i]);
+      break;
+    case "brown":
+      perColoreOcchi.brown.push(starWarsCharacters[i]);
+      break;
+    case "blue":
+      perColoreOcchi.red.push(starWarsCharacters[i]);
+      break;
+    case "blue":
+      perColoreOcchi["blue-gray"].push(starWarsCharacters[i]);
+      break;
   }
 }
 
@@ -218,6 +204,16 @@ console.table(perColoreOcchi);
 
 /* SCRIVI QUI LA TUA RISPOSTA */
 
+let i = 0;
+let massaTotale = 0;
+
+while (i < starWarsCharacters.length) {
+  massaTotale += Number(starWarsCharacters[i].mass);
+  i++;
+}
+
+console.log(massaTotale);
+
 /* ESERCIZIO 6 — Classifica il carico
    Su massaTotale, switch (true) o if/else if:
    < 500            → "Carico leggero"
@@ -229,10 +225,36 @@ console.table(perColoreOcchi);
 
 /* SCRIVI QUI LA TUA RISPOSTA */
 
+switch (true) {
+  case massaTotale < 500:
+    console.log(`Carico Leggero`);
+    break;
+  case massaTotale > 500 && massaTotale < 700:
+    console.log(`Carico Medio`);
+    break;
+  case massaTotale > 700 && massaTotale < 900:
+    console.log(`Attenzione : oltre 700`);
+    break;
+  case massaTotale > 900 && massaTotale < 1000:
+    console.log(`Carico critico`);
+    break;
+  case massaTotale > 1000:
+    console.log(`PERICOLO : sovraccarico`);
+    break;
+}
+
 /* ESERCIZIO 7 — Robotizza i n/a
    For: per ogni personaggio con gender === "n/a", cambialo in "robot".
    Stampa l'array.
 */
+
+for (let i = 0; i < starWarsCharacters.length; i++) {
+  if (starWarsCharacters[i].gender === "n/a") {
+    starWarsCharacters[i].gender = "robot";
+  }
+}
+
+console.log(starWarsCharacters);
 
 /* SCRIVI QUI LA TUA RISPOSTA */
 
@@ -243,6 +265,23 @@ console.table(perColoreOcchi);
 */
 
 /* SCRIVI QUI LA TUA RISPOSTA */
+let tallest = starWarsCharacters[0];
+let lower = starWarsCharacters[0];
+
+// for (let i = 0; i < starWarsCharacters.length; i++) {
+//   heights.push(Number(starWarsCharacters[i].height));
+// }
+
+for (let i = 1; i < starWarsCharacters.length; i++) {
+  const c = starWarsCharacters[i];
+  if (Number(c.height) > Number(tallest.height)) {
+    tallest = c;
+  } else if (Number(c.height) < Number(lower.height)) {
+    lower = c;
+  }
+}
+console.log(`Più alto : ${tallest.name} (${lower.height})`);
+console.log(`Più basso : ${lower.name}(${lower.height})`);
 
 /* ESERCIZIO 9 — Rimuovi i femminili dai nomi (cicli annidati)
    Sull'array "nomi" dell'esercizio 1: for esterno su nomi, for interno su personaggiFemminili.
@@ -251,6 +290,18 @@ console.table(perColoreOcchi);
 */
 
 /* SCRIVI QUI LA TUA RISPOSTA */
+
+console.log(names.length);
+
+for (let i = 0; i < names.length; i++) {
+  for (let j = 0; j < femaleCharacters.length; j++) {
+    if (names.includes(femaleCharacters[j].name)) {
+      names.splice(1, 1);
+    }
+  }
+}
+
+console.log(names.length);
 
 /* ESERCIZIO 10 — Personaggio casuale
    indice = Math.floor(Math.random() * starWarsCharacters.length)
@@ -261,9 +312,24 @@ console.table(perColoreOcchi);
 
 /* SCRIVI QUI LA TUA RISPOSTA */
 
+let index = Math.floor(Math.random() * starWarsCharacters.length);
+let personaggio = starWarsCharacters[index];
+
+for (let i = 0; i < starWarsCharacters.length; i++) {
+  if (personaggio.gender === "male") {
+    console.log(`Lui ${personaggio.name} è alto ${personaggio.height} cm`);
+  } else if (personaggio.gender === "female") {
+    console.log(`Lei ${personaggio.name} è alta ${personaggio.height} cm`);
+  }
+}
+
 /* --EXTRA-- ESERCIZIO 11 — Conta per colore di occhi
    For...in sulle chiavi di perColoreOcchi.
    Stampa: "blue: 4 personaggi", "yellow: 2 personaggi", ecc.
 */
 
 /* SCRIVI QUI LA TUA RISPOSTA */
+
+for (const chiave in perColoreOcchi) {
+  console.log(`${chiave}: ${perColoreOcchi[chiave].length} personaggi`);
+}
