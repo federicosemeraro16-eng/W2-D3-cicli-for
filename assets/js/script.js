@@ -322,6 +322,11 @@ for (let i = 0; i < starWarsCharacters.length; i++) {
     console.log(`Lei ${personaggio.name} è alta ${personaggio.height} cm`);
   }
 }
+if (personaggio.hair_color !== "n/a" && personaggio.hair_color !== "none") {
+  console.log(`Capelli :${personaggio.hair_color}`);
+} else {
+  console.log(`Senza Capelli`);
+}
 
 /* --EXTRA-- ESERCIZIO 11 — Conta per colore di occhi
    For...in sulle chiavi di perColoreOcchi.
